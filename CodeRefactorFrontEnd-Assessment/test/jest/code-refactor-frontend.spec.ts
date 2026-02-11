@@ -3,7 +3,7 @@ import { Item, CodeRefactorFrontEnd } from '@/code-refactor-frontend';
 describe('CodeRefactorFrontEnd', () => {
 
   // ============================================
-  // ÖRNEK TEST - Bu testi düzeltmeniz gerekiyor
+  // ÖRNEK TEST
   // ============================================
   it('should decrease quality by 1 for normal items', () => {
     const codeRefactor = new CodeRefactorFrontEnd([new Item('Normal Item', 10, 20)]);
@@ -115,9 +115,23 @@ describe('CodeRefactorFrontEnd', () => {
   // DEPRECATED LIBRARY TESTLERİ (YENİ ÖZELLİK)
   // ============================================
   describe('Deprecated Library', () => {
-    it.todo('should decrease quality twice as fast as normal items');
-    it.todo('should decrease quality 4x as fast after sellIn date');
-    it.todo('should never have negative quality');
+    it('should decrease quality twice as fast as normal items', () => {
+      const codeRefactor = new CodeRefactorFrontEnd([new Item('Deprecated Library', 10, 20)]);
+      const items = codeRefactor.updateQuality();
+      expect(items[0].quality).toBe(18); // 20 - 2
+    });
+
+    it('should decrease quality 4x as fast after sellIn date', () => {
+      const codeRefactor = new CodeRefactorFrontEnd([new Item('Deprecated Library', 0, 20)]);
+      const items = codeRefactor.updateQuality();
+      expect(items[0].quality).toBe(16); // 20 - 4
+    });
+
+    it('should never have negative quality', () => {
+      const codeRefactor = new CodeRefactorFrontEnd([new Item('Deprecated Library', 10, 1)]);
+      const items = codeRefactor.updateQuality();
+      expect(items[0].quality).toBe(0);
+    });
   });
 
 });

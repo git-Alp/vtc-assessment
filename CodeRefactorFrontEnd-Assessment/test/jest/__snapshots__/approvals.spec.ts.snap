@@ -34,7 +34,7 @@ Eternal Code License, -1, 80
 Conference Pass for DevDays 2025, 14, 21
 Conference Pass for DevDays 2025, 9, 50
 Conference Pass for DevDays 2025, 4, 50
-Deprecated Library, 2, 5
+Deprecated Library, 2, 4
 
 -------- day 2 --------
 name, sellIn, quality
@@ -46,7 +46,7 @@ Eternal Code License, -1, 80
 Conference Pass for DevDays 2025, 13, 22
 Conference Pass for DevDays 2025, 8, 50
 Conference Pass for DevDays 2025, 3, 50
-Deprecated Library, 1, 4
+Deprecated Library, 1, 2
 
 -------- day 3 --------
 name, sellIn, quality
@@ -58,7 +58,7 @@ Eternal Code License, -1, 80
 Conference Pass for DevDays 2025, 12, 23
 Conference Pass for DevDays 2025, 7, 50
 Conference Pass for DevDays 2025, 2, 50
-Deprecated Library, 0, 3
+Deprecated Library, 0, 0
 
 -------- day 4 --------
 name, sellIn, quality
@@ -70,7 +70,7 @@ Eternal Code License, -1, 80
 Conference Pass for DevDays 2025, 11, 24
 Conference Pass for DevDays 2025, 6, 50
 Conference Pass for DevDays 2025, 1, 50
-Deprecated Library, -1, 1
+Deprecated Library, -1, 0
 
 -------- day 5 --------
 name, sellIn, quality
