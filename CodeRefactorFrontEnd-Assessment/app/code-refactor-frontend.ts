@@ -18,47 +18,50 @@ export class CodeRefactorFrontEnd {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != 'Vintage Framework' && this.items[i].name != 'Conference Pass for DevDays 2025') {
-        if (this.items[i].quality > 0) {
-          if (this.items[i].name != 'Eternal Code License') {
-            this.items[i].quality = this.items[i].quality - 1
-          }
+    for (const item of this.items) {
+
+      const isVintage = item.name === 'Vintage Framework';
+      const isPass = item.name === 'Conference Pass for DevDays 2025';
+      const isLegendary = item.name === 'Eternal Code License';
+
+      // SellIn öncesi
+      if (!isVintage && !isPass) {
+        // Normal ürünler ve diğerleri
+        if (!isLegendary && item.quality > 0) {
+          item.quality--;
         }
       } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
-          if (this.items[i].name == 'Conference Pass for DevDays 2025') {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
+        // Değeri artan ürünler (Vintage ve Pass)
+        if (item.quality < 50) {
+          item.quality++;
+
+          if (isPass) {
+            if (item.sellIn < 11 && item.quality < 50) {
+              item.quality++;
             }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
+            if (item.sellIn < 6 && item.quality < 50) {
+              item.quality++;
             }
           }
         }
       }
-      if (this.items[i].name != 'Eternal Code License') {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
+
+      // Gün Eksilmesi
+      if (!isLegendary) {
+        item.sellIn--;
       }
-      if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != 'Vintage Framework') {
-          if (this.items[i].name != 'Conference Pass for DevDays 2025') {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Eternal Code License') {
-                this.items[i].quality = this.items[i].quality - 1
-              }
-            }
-          } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality
+
+      // Süresi Dolmuş Ürünler
+      if (item.sellIn < 0) {
+        if (isVintage) {
+          if (item.quality < 50) {
+            item.quality++;
           }
-        } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
+        } else if (isPass) {
+          item.quality = 0;
+        } else if (!isLegendary) {
+          if (item.quality > 0) {
+            item.quality--;
           }
         }
       }
