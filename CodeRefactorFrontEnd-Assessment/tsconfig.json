@@ -12,7 +12,11 @@
       "@/*": [
         "app/*"
       ]
-    }
+    },
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "exclude": [
     "node_modules"
